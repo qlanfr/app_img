@@ -93,6 +93,13 @@
             border-radius: 8px;
             margin: 15px 0;
         }
+        .highlight-green {
+            background-color: #ecfdf5;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #10b981;
+        }
         .contact-info {
             background-color: #e0f2fe;
             padding: 20px;
@@ -110,6 +117,10 @@
             text-align: center;
             color: #666;
             font-size: 14px;
+        }
+        .footer a {
+            color: #7c3aed;
+            margin: 0 10px;
         }
         @media (max-width: 600px) {
             .container {
@@ -138,6 +149,12 @@
             이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 다음과 같이 개인정보처리방침을 수립·공개합니다.
         </p>
 
+        <div class="highlight-green">
+            <strong>참고:</strong> 본 앱은 <strong>로그인 없이도 사용 가능</strong>합니다.
+            로그인은 다중 기기 동기화를 원하는 경우에만 선택적으로 이용할 수 있습니다.
+            또한, <strong>GPS 위치 권한을 사용하지 않으며</strong>, 날씨 정보는 사용자가 설정에서 선택한 도시를 기반으로 제공됩니다.
+        </div>
+
         <h2>제1조 (개인정보의 수집 항목 및 수집 방법)</h2>
 
         <h3>1. 수집하는 개인정보 항목</h3>
@@ -149,8 +166,8 @@
             </tr>
             <tr>
                 <td>계정 정보</td>
-                <td>이메일 주소, 이름, 프로필 사진 (Google 계정 연동)</td>
-                <td>필수</td>
+                <td>이메일 주소, 이름, 프로필 사진 (Google 계정 연동 시)</td>
+                <td><strong>선택</strong></td>
             </tr>
             <tr>
                 <td>일기 정보</td>
@@ -163,13 +180,13 @@
                 <td>선택</td>
             </tr>
             <tr>
-                <td>위치 정보</td>
-                <td>GPS 기반 위치 정보 (위도, 경도, 장소명)</td>
+                <td>도시 정보</td>
+                <td>사용자가 설정에서 선택한 도시명 (GPS 미사용)</td>
                 <td>선택</td>
             </tr>
             <tr>
                 <td>날씨 정보</td>
-                <td>작성 시점의 날씨, 기온</td>
+                <td>선택한 도시의 날씨, 기온</td>
                 <td>선택</td>
             </tr>
             <tr>
@@ -184,20 +201,25 @@
             </tr>
         </table>
 
+        <div class="highlight-green">
+            <strong>GPS 미사용 안내:</strong> 본 앱은 GPS 위치 권한을 사용하지 않습니다.
+            날씨 정보는 사용자가 설정 화면에서 직접 선택한 도시(서울, 부산, 인천 등 20개 주요 도시)를 기반으로 제공됩니다.
+        </div>
+
         <h3>2. 개인정보 수집 방법</h3>
         <ul>
-            <li>Google 소셜 로그인을 통한 계정 연동</li>
+            <li>Google 소셜 로그인을 통한 계정 연동 (선택적)</li>
             <li>앱 내 일기 작성 시 이용자의 직접 입력</li>
-            <li>기기의 GPS 기능을 통한 위치 정보 수집 (이용자 동의 시)</li>
+            <li>설정 화면에서 사용자가 선택한 도시 정보</li>
             <li>앱 사용 과정에서 자동으로 생성되는 정보 수집</li>
         </ul>
 
         <h2>제2조 (개인정보의 수집 및 이용 목적)</h2>
         <p>운영팀은 다음의 목적을 위하여 개인정보를 처리합니다.</p>
         <ol>
-            <li><strong>회원 관리:</strong> 회원 가입 및 본인 확인, 서비스 부정 이용 방지</li>
+            <li><strong>회원 관리:</strong> 회원 가입 및 본인 확인, 서비스 부정 이용 방지 (로그인 사용자에 한함)</li>
             <li><strong>서비스 제공:</strong> 일기 저장 및 관리, AI 이미지 생성, 감정 통계 제공</li>
-            <li><strong>맞춤 서비스:</strong> 위치 및 날씨 정보 기반 일기 기록 보조</li>
+            <li><strong>맞춤 서비스:</strong> 선택한 도시의 날씨 정보 기반 일기 기록 보조</li>
             <li><strong>서비스 개선:</strong> 신규 서비스 개발, 서비스 품질 향상</li>
             <li><strong>고객 지원:</strong> 이용자 문의 응대, 공지사항 전달</li>
         </ol>
@@ -212,20 +234,29 @@
                 <th>제공 항목</th>
             </tr>
             <tr>
-                <td>OpenAI</td>
+                <td>Google (Gemini API)</td>
+                <td>일기 내용 번역 (한글→영어)</td>
+                <td>일기 내용 (프롬프트 생성용)</td>
+            </tr>
+            <tr>
+                <td>DeepInfra</td>
                 <td>AI 이미지 생성</td>
-                <td>일기 내용 (이미지 생성용 프롬프트)</td>
+                <td>번역된 프롬프트 (영어)</td>
             </tr>
             <tr>
                 <td>OpenWeatherMap</td>
                 <td>날씨 정보 조회</td>
-                <td>위치 정보 (위도, 경도)</td>
+                <td>선택한 도시명</td>
             </tr>
         </table>
 
         <div class="highlight">
-            <strong>참고:</strong> AI 이미지 생성을 위해 일기 내용이 OpenAI에 전송됩니다.
-            전송된 데이터는 이미지 생성 목적으로만 사용되며, OpenAI의 개인정보처리방침에 따라 처리됩니다.
+            <strong>AI 이미지 생성 과정:</strong><br>
+            1. 일기 내용이 Google Gemini를 통해 영어 프롬프트로 번역됩니다.<br>
+            2. 번역된 프롬프트가 DeepInfra FLUX 모델로 전송되어 3장의 이미지가 생성됩니다.<br>
+            3. 사용자가 첨부한 사진이 있는 경우, 해당 사진도 분석되어 이미지 생성에 반영될 수 있습니다.<br>
+            <br>
+            전송된 데이터는 이미지 생성 목적으로만 사용되며, 각 서비스의 개인정보처리방침에 따라 처리됩니다.
         </div>
 
         <h2>제4조 (개인정보의 보유 및 이용 기간)</h2>
@@ -238,7 +269,7 @@
             </tr>
             <tr>
                 <td>회원 계정 정보</td>
-                <td>회원 탈퇴 시까지</td>
+                <td>회원 탈퇴 시까지 (로그인 사용자에 한함)</td>
             </tr>
             <tr>
                 <td>일기 및 관련 데이터</td>
@@ -266,15 +297,23 @@
             <li>처리 정지 요구</li>
             <li>회원 탈퇴 및 동의 철회</li>
         </ol>
-        <p>위 권리 행사는 이메일을 통해 하실 수 있으며, 운영팀은 이에 대해 지체없이 조치하겠습니다.</p>
+        <p>위 권리 행사는 앱 내 설정 메뉴 또는 이메일을 통해 하실 수 있으며, 운영팀은 이에 대해 지체없이 조치하겠습니다.</p>
+
+        <div class="highlight">
+            <strong>계정 및 데이터 삭제:</strong> 앱 내 설정 > 계정 관리 > 계정 삭제를 통해 직접 삭제하거나,
+            이메일(yh9365@gmail.com)로 요청하실 수 있습니다.
+            <br><br>
+            <a href="account-deletion.html">계정 삭제 안내 페이지 바로가기</a>
+        </div>
 
         <h2>제7조 (개인정보의 안전성 확보 조치)</h2>
         <p>운영팀은 개인정보의 안전성 확보를 위해 다음과 같은 조치를 취하고 있습니다.</p>
         <ul>
             <li><strong>데이터 암호화:</strong> 이용자의 개인정보는 암호화되어 저장 및 전송됩니다.</li>
-            <li><strong>보안 프로토콜:</strong> HTTPS를 통한 안전한 데이터 전송</li>
+            <li><strong>보안 프로토콜:</strong> HTTPS (TLS 1.3)를 통한 안전한 데이터 전송</li>
             <li><strong>접근 제한:</strong> 개인정보에 대한 접근 권한을 최소화</li>
             <li><strong>보안 토큰:</strong> JWT 토큰을 통한 안전한 인증 관리</li>
+            <li><strong>로컬 저장소 암호화:</strong> 기기 내 저장 데이터 암호화 (Hive 암호화)</li>
         </ul>
 
         <h2>제8조 (개인정보 자동 수집 장치의 설치·운영 및 거부)</h2>
@@ -311,6 +350,10 @@
         </div>
 
         <div class="footer">
+            <p>
+                <a href="privacy-policy.html">개인정보처리방침</a> |
+                <a href="account-deletion.html">계정 삭제 안내</a>
+            </p>
             <p>본 개인정보처리방침은 2025년 12월 9일부터 시행됩니다.</p>
             <p>&copy; 2025 삐뚤빼뚤 일기. All rights reserved.</p>
         </div>
